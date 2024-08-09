@@ -1,0 +1,16 @@
+platforms:
+  x86_64-linux:
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2024.03.5/rdkit-2024.03.5-x86_64-linux.zip
+    sha256: 32de5f5ef43617233b8d4ced4679076612038e756150c60d8f487bf9761fe77d
+  aarch64-linux:
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2024.03.5/rdkit-2024.03.5-aarch64-linux.zip
+    sha256: 4530b3aef0688b7c63d849eace6008e2eed978d2d016cdebe54f57ec81f4ca22
+  x86_64-darwin:
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2024.03.5/rdkit-2024.03.5-x86_64-darwin.zip
+    sha256: 5349e4cdaacf58895beb6370c9b4ecd5764834ab4beef9619e927f738ac256bc
+  arm64-darwin:
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2024.03.5/rdkit-2024.03.5-aarch64-darwin.zip
+    sha256: ac2cb3d8c3e1364919bf6ddc567639bcaf456a617fc84ae0546bcdfe6716ce61
+  x64-mingw:
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2024.03.5/rdkit-2024.03.5-x86_64-windows.zip
+    sha256: 12af7ca31966e08abe96759422e2607dc65ed0e7aab02605303105a5791c87b5
