@@ -84,7 +84,7 @@ MACCS
 mol.maccs_fingerprint
 ```
 
-You can use a library like [pgvector-ruby](https://github.com/pgvector/pgvector-ruby) to find similar molecules. See an [example](https://github.com/pgvector/pgvector-ruby/blob/master/examples/morgan_fingerprints.rb).
+You can use a library like [pgvector-ruby](https://github.com/pgvector/pgvector-ruby) to find similar molecules. See an [example](https://github.com/pgvector/pgvector-ruby/blob/master/examples/rdkit/example.rb).
 
 ## Updates
 
