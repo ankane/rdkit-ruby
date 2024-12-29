@@ -1,3 +1,7 @@
+## 0.1.3 (unreleased)
+
+- Fixed warning with Ruby 3.4
+
 ## 0.1.2 (2024-09-27)
 
 - Updated RDKit to 2024.09.1
