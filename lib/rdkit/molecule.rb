@@ -54,8 +54,8 @@ module RDKit
       arr = FFI.get_mol_frags(@ptr, @sz, sz_arr, num_frags, to_details(details), nil)
       check_ptr(arr)
 
-      # TODO fix
-      num_frags.ptr.to_i.times.map do |i|
+      num = num_frags.to_str(Fiddle::SIZEOF_SIZE_T).unpack1(Fiddle::SIZEOF_SIZE_T == 4 ? "L" : "Q")
+      num.times.map do |i|
         ptr = (arr + i * Fiddle::SIZEOF_VOIDP).ptr
         sz = (sz_arr.ptr + i * Fiddle::SIZEOF_SIZE_T).ptr
 
