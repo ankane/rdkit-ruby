@@ -46,24 +46,25 @@ module RDKit
     end
 
     def fragments(sanitize: true)
-      sz_arr = Fiddle::Pointer.malloc(Fiddle::SIZEOF_VOIDP)
-      num_frags = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T)
+      sz_arr = Fiddle::Pointer.malloc(Fiddle::SIZEOF_VOIDP, Fiddle::RUBY_FREE)
+      num_frags = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T, Fiddle::RUBY_FREE)
       details = {
         sanitizeFrags: sanitize
       }
-      arr = FFI.get_mol_frags(@ptr, @sz, sz_arr.ref, num_frags.ref, to_details(details), nil)
+      arr = FFI.get_mol_frags(@ptr, @sz, sz_arr, num_frags, to_details(details), nil)
       check_ptr(arr)
 
-      num_frags.to_i.times.map do |i|
+      # TODO fix
+      num_frags.ptr.to_i.times.map do |i|
         ptr = (arr + i * Fiddle::SIZEOF_VOIDP).ptr
-        sz = (sz_arr + i * Fiddle::SIZEOF_SIZE_T).ptr
+        sz = (sz_arr.ptr + i * Fiddle::SIZEOF_SIZE_T).ptr
 
         mol = self.class.allocate
         mol.send(:load_ptr, ptr, sz)
         mol
       end
     ensure
-      free_ptr(sz_arr)
+      free_ptr(sz_arr.ptr)
       free_ptr(arr)
     end
 
@@ -262,20 +263,20 @@ module RDKit
     end
 
     def load_smiles(input, sanitize: true, kekulize: true, remove_hs: true)
-      sz = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T)
+      sz = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T, Fiddle::RUBY_FREE)
       details = {
         sanitize: sanitize,
         kekulize: kekulize,
         removeHs: remove_hs
       }
-      ptr = FFI.get_mol(input.to_str, sz.ref, to_details(details))
-      load_ptr(ptr, sz)
+      ptr = FFI.get_mol(input.to_str, sz, to_details(details))
+      load_ptr(ptr, sz.ptr)
     end
 
     def load_smarts(input)
-      sz = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T)
-      ptr = FFI.get_qmol(input.to_str, sz.ref, to_details({}))
-      load_ptr(ptr, sz)
+      sz = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T, Fiddle::RUBY_FREE)
+      ptr = FFI.get_qmol(input.to_str, sz, to_details({}))
+      load_ptr(ptr, sz.ptr)
     end
 
     def load_ptr(ptr, sz)
