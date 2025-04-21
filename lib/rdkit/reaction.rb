@@ -27,7 +27,7 @@ module RDKit
       sz = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T, Fiddle::RUBY_FREE)
       @input = input.to_str
       ptr = FFI.get_rxn(@input, sz, to_details({}))
-      load_ptr(ptr, sz.ptr)
+      load_ptr(ptr, Utils.read_size(sz))
     end
 
     def load_ptr(ptr, sz)

@@ -261,13 +261,13 @@ module RDKit
         removeHs: remove_hs
       }
       ptr = FFI.get_mol(input.to_str, sz, to_details(details))
-      load_ptr(ptr, sz.ptr)
+      load_ptr(ptr, Utils.read_size(sz))
     end
 
     def load_smarts(input)
       sz = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T, Fiddle::RUBY_FREE)
       ptr = FFI.get_qmol(input.to_str, sz, to_details({}))
-      load_ptr(ptr, sz.ptr)
+      load_ptr(ptr, Utils.read_size(sz))
     end
 
     def load_ptr(ptr, sz)
@@ -331,10 +331,11 @@ module RDKit
 
     def modify(op, *args)
       ptr_ref = @ptr.ref
-      sz_ref = @sz.ref
+      # TODO write as size_t
+      sz_ref = Fiddle::Pointer.new(@sz).ref
       check_status(FFI[op.to_s].call(ptr_ref, sz_ref, *args))
       @ptr = ptr_ref.ptr
-      @sz = sz_ref.ptr
+      @sz = Utils.read_size(sz_ref)
       self
     end
   end

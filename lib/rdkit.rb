@@ -6,6 +6,7 @@ require "json"
 require_relative "rdkit/molecule"
 require_relative "rdkit/reaction"
 require_relative "rdkit/version"
+require_relative "rdkit/utils"
 
 module RDKit
   class Error < StandardError; end
