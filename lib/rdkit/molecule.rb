@@ -146,8 +146,7 @@ module RDKit
     end
 
     def add_hs!
-      check_status(FFI.add_hs(@ptr.ref, @sz.ref))
-      self
+      modify(:add_hs)
     end
 
     def remove_hs
@@ -155,8 +154,7 @@ module RDKit
     end
 
     def remove_hs!
-      check_status(FFI.remove_all_hs(@ptr.ref, @sz.ref))
-      self
+      modify(:remove_all_hs)
     end
 
     def cleanup
@@ -164,8 +162,7 @@ module RDKit
     end
 
     def cleanup!
-      check_status(FFI.cleanup(@ptr.ref, @sz.ref, to_details({})))
-      self
+      modify(:cleanup, to_details({}))
     end
 
     def normalize
@@ -173,8 +170,7 @@ module RDKit
     end
 
     def normalize!
-      check_status(FFI.normalize(@ptr.ref, @sz.ref, to_details({})))
-      self
+      modify(:normalize, to_details({}))
     end
 
     def neutralize
@@ -182,8 +178,7 @@ module RDKit
     end
 
     def neutralize!
-      check_status(FFI.neutralize(@ptr.ref, @sz.ref, to_details({})))
-      self
+      modify(:neutralize, to_details({}))
     end
 
     def reionize
@@ -191,8 +186,7 @@ module RDKit
     end
 
     def reionize!
-      check_status(FFI.reionize(@ptr.ref, @sz.ref, to_details({})))
-      self
+      modify(:reionize, to_details({}))
     end
 
     def canonical_tautomer
@@ -200,8 +194,7 @@ module RDKit
     end
 
     def canonical_tautomer!
-      check_status(FFI.canonical_tautomer(@ptr.ref, @sz.ref, to_details({})))
-      self
+      modify(:canonical_tautomer, to_details({}))
     end
 
     def charge_parent
@@ -209,8 +202,7 @@ module RDKit
     end
 
     def charge_parent!
-      check_status(FFI.charge_parent(@ptr.ref, @sz.ref, to_details({})))
-      self
+      modify(:charge_parent, to_details({}))
     end
 
     def fragment_parent
@@ -218,8 +210,7 @@ module RDKit
     end
 
     def fragment_parent!
-      check_status(FFI.fragment_parent(@ptr.ref, @sz.ref, to_details({})))
-      self
+      modify(:fragment_parent, to_details({}))
     end
 
     def to_smiles
@@ -336,6 +327,15 @@ module RDKit
       if status != 1
         raise Error, "bad status: #{status}"
       end
+    end
+
+    def modify(op, *args)
+      ptr_ref = @ptr.ref
+      sz_ref = @sz.ref
+      check_status(FFI[op.to_s].call(ptr_ref, sz_ref, *args))
+      @ptr = ptr_ref.ptr
+      @sz = sz_ref.ptr
+      self
     end
   end
 end
