@@ -260,13 +260,13 @@ module RDKit
         kekulize: kekulize,
         removeHs: remove_hs
       }
-      ptr = FFI.get_mol(input.to_str, sz, to_details(details))
+      ptr = FFI.get_mol(+input.to_str, sz, to_details(details))
       load_ptr(ptr, Utils.read_size(sz))
     end
 
     def load_smarts(input)
       sz = Fiddle::Pointer.malloc(Fiddle::SIZEOF_SIZE_T, Fiddle::RUBY_FREE)
-      ptr = FFI.get_qmol(input.to_str, sz, to_details({}))
+      ptr = FFI.get_qmol(+input.to_str, sz, to_details({}))
       load_ptr(ptr, Utils.read_size(sz))
     end
 
