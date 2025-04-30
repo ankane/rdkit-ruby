@@ -305,7 +305,7 @@ module RDKit
     end
 
     def check_ptr(ptr)
-      if ptr.nil? || ptr.null?
+      if ptr.null?
         raise Error, "bad pointer"
       end
     end
