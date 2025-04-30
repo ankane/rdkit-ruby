@@ -70,7 +70,7 @@ module RDKit
 
     # housekeeping
     # treat as void *ptr since calls free() internally
-    FREE = extern "void free_ptr(char *ptr)"
+    extern "void free_ptr(char *ptr)"
 
     # other
     extern "char *version()"

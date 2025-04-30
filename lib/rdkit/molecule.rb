@@ -276,7 +276,7 @@ module RDKit
       end
 
       @ptr = ptr
-      @ptr.free = FFI::FREE
+      @ptr.free = FFI["free_ptr"]
       @sz = sz
     end
 
