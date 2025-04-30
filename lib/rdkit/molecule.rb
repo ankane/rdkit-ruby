@@ -330,12 +330,10 @@ module RDKit
     end
 
     def modify(op, *args)
-      ptr_ref = @ptr.ref
       # TODO write as size_t
-      sz_ref = Fiddle::Pointer.new(@sz).ref
-      check_status(FFI[op.to_s].call(ptr_ref, sz_ref, *args))
-      @ptr = ptr_ref.ptr
-      @sz = Utils.read_size(sz_ref)
+      sz = Fiddle::Pointer.new(@sz)
+      check_status(FFI[op.to_s].call(@ptr.ref, sz.ref, *args))
+      @sz = Utils.read_size(sz.ref)
       self
     end
   end
