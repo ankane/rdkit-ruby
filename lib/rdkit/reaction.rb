@@ -50,17 +50,10 @@ module RDKit
       end
     end
 
-    def free_ptr(ptr)
-      FFI.free_ptr(ptr) if ptr
-    end
-
     def check_string(ptr)
       check_ptr(ptr)
-      begin
-        ptr.to_s
-      ensure
-        free_ptr(ptr)
-      end
+      ptr.free = FFI["free_ptr"]
+      ptr.to_s
     end
   end
 end
