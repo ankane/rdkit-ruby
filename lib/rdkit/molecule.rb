@@ -53,19 +53,19 @@ module RDKit
       }
       arr = FFI.get_mol_frags(@ptr, @sz, sz_arr, num_frags, to_details(details), nil)
       check_ptr(arr)
+      arr.free = FFI["free_ptr"]
+      sz_arr = sz_arr.ptr
+      sz_arr.free = FFI["free_ptr"]
 
       num = num_frags.to_str(Fiddle::SIZEOF_SIZE_T).unpack1(Fiddle::SIZEOF_SIZE_T == 4 ? "L" : "Q")
       num.times.map do |i|
         ptr = (arr + i * Fiddle::SIZEOF_VOIDP).ptr
-        sz = (sz_arr.ptr + i * Fiddle::SIZEOF_SIZE_T).ptr
+        sz = (sz_arr + i * Fiddle::SIZEOF_SIZE_T).ptr
 
         mol = self.class.allocate
         mol.send(:load_ptr, ptr, sz)
         mol
       end
-    ensure
-      free_ptr(sz_arr.ptr)
-      free_ptr(arr)
     end
 
     def rdkit_fingerprint(min_path: 1, max_path: 7, length: 2048, bits_per_hash: 2, use_hs: true, branched_paths: true, use_bond_order: true)
