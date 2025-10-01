@@ -1,4 +1,4 @@
-## 0.2.0 (unreleased)
+## 0.2.0 (2025-10-01)
 
 - Updated RDKit to 2025.09.1
 - Dropped support for Ruby < 3.2
