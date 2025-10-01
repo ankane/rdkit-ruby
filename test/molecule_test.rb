@@ -156,7 +156,7 @@ class MoleculeTest < Minitest::Test
   def test_cleanup
     mol = RDKit::Molecule.from_smiles("[Pt]CCN(=O)=O", sanitize: false)
     assert_equal "[CH2-]C[N+](=O)[O-].[Pt+]", mol.cleanup.to_smiles
-    assert_equal "O=N(=O)CC[Pt]", mol.to_smiles
+    assert_equal "O=N(=O)C[CH2][Pt]", mol.to_smiles
   end
 
   def test_cleanup!
@@ -216,7 +216,7 @@ class MoleculeTest < Minitest::Test
   def test_charge_parent
     mol = RDKit::Molecule.from_smiles("[Pt]CCN(=O)=O", sanitize: false)
     assert_equal "CC[N+](=O)[O-]", mol.charge_parent.to_smiles
-    assert_equal "O=N(=O)CC[Pt]", mol.to_smiles
+    assert_equal "O=N(=O)C[CH2][Pt]", mol.to_smiles
   end
 
   def test_charge_parent!
@@ -228,7 +228,7 @@ class MoleculeTest < Minitest::Test
   def test_fragment_parent
     mol = RDKit::Molecule.from_smiles("[Pt]CCN(=O)=O", sanitize: false)
     assert_equal "[CH2-]C[N+](=O)[O-]", mol.fragment_parent.to_smiles
-    assert_equal "O=N(=O)CC[Pt]", mol.to_smiles
+    assert_equal "O=N(=O)C[CH2][Pt]", mol.to_smiles
   end
 
   def test_fragment_parent!
@@ -260,7 +260,7 @@ class MoleculeTest < Minitest::Test
   def test_to_json
     mol = RDKit::Molecule.from_smiles("Cc1ccccc1")
     data = JSON.parse(mol.to_json)
-    assert_equal 11, data["rdkitjson"]["version"]
+    assert_equal 12, data["rdkitjson"]["version"]
   end
 
   def test_to_svg

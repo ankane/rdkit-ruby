@@ -1,3 +1,7 @@
+## 0.2.0 (unreleased)
+
+- Updated RDKit to 2025.09.1
+
 ## 0.1.4 (2025-05-04)
 
 - Fixed memory leaks
