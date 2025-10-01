@@ -1,6 +1,7 @@
 ## 0.2.0 (unreleased)
 
 - Updated RDKit to 2025.09.1
+- Dropped support for Ruby < 3.2
 
 ## 0.1.4 (2025-05-04)
 
