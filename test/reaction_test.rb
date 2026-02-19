@@ -29,6 +29,20 @@ class ReactionTest < Minitest::Test
     assert_match "height='400px'", svg
   end
 
+  def test_to_svg_additional_attributes
+    rxn = RDKit::Reaction.from_smarts("[CH3:1][OH:2]>>[CH2:1]=[OH0:2]")
+    svg = rxn.to_svg(clearBackground: true, backgroundColour: [1.0, 1.0, 1.0, 0.0])
+    assert_match "<svg", svg
+    assert_match "fill:#FFFFFF00", svg
+  end
+
+  def test_to_svg_clear_background_false
+    rxn = RDKit::Reaction.from_smarts("[CH3:1][OH:2]>>[CH2:1]=[OH0:2]")
+    svg = rxn.to_svg(clearBackground: false)
+    assert_match "<svg", svg
+    refute_match "<rect", svg
+  end
+
   def test_to_s
     rxn = RDKit::Reaction.from_smarts("[CH3:1][OH:2]>>[CH2:1]=[OH0:2]")
     assert_equal "#<RDKit::Reaction [CH3:1][OH:2]>>[CH2:1]=[OH0:2]>", rxn.to_s
