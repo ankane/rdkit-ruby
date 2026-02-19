@@ -8,11 +8,12 @@ module RDKit
       rxn
     end
 
-    def to_svg(width: 250, height: 200)
+    def to_svg(width: 250, height: 200, **attributes)
       details = {
         width: width,
         height: height
       }
+      details.merge!(attributes)
       check_string(FFI.get_rxn_svg(@ptr, @sz, to_details(details)))
     end
 

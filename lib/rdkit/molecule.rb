@@ -233,11 +233,12 @@ module RDKit
       check_string(FFI.get_json(@ptr, @sz, to_details({})))
     end
 
-    def to_svg(width: 250, height: 200)
+    def to_svg(width: 250, height: 200, **attributes)
       details = {
         width: width,
         height: height
       }
+      details.merge!(attributes)
       check_string(FFI.get_svg(@ptr, @sz, to_details(details)))
     end
 

@@ -279,6 +279,20 @@ class MoleculeTest < Minitest::Test
     assert_match "height='400px'", svg
   end
 
+  def test_to_svg_additional_attributes
+    mol = RDKit::Molecule.from_smiles("Cc1ccccc1")
+    svg = mol.to_svg(clearBackground: true, backgroundColour: [1.0, 1.0, 1.0, 0.0])
+    assert_match "<svg", svg
+    assert_match "fill:#FFFFFF00", svg
+  end
+
+  def test_to_svg_clear_background_false
+    mol = RDKit::Molecule.from_smiles("Cc1ccccc1")
+    svg = mol.to_svg(clearBackground: false)
+    assert_match "<svg", svg
+    refute_match "<rect", svg
+  end
+
   def test_to_s
     mol = RDKit::Molecule.from_smiles("Cc1ccccc1")
     assert_equal "#<RDKit::Molecule Cc1ccccc1>", mol.to_s
