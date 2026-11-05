@@ -1,3 +1,7 @@
+## 0.2.1 (unreleased)
+
+- Updated RDKit to 2026.09.2
+
 ## 0.2.0 (2025-10-01)
 
 - Updated RDKit to 2025.09.1

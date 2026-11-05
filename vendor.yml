@@ -1,16 +1,16 @@
 platforms:
   x86_64-linux:
-    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2025.09.1/rdkit-2025.09.1-x86_64-linux.zip
-    sha256: 2ce0732caedcc86882a634035a7c99a38638645a39eb0ebedc9e6af4c1bf1e57
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2026.09.2/rdkit-2026.09.2-x86_64-linux.zip
+    sha256: 4646c9f5767ea60824b4e2f750ab8d7ed1a8150341d626345e0aa87c3c47f138
   aarch64-linux:
-    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2025.09.1/rdkit-2025.09.1-aarch64-linux.zip
-    sha256: c4e815e8c9c8ec5d159d7bf7dc9274c79d74acad24a51f268d9f40f6f7b51e56
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2026.09.2/rdkit-2026.09.2-aarch64-linux.zip
+    sha256: c8bb5ba3e03900f2656bb93b0fbf56839da8e8fb91bf08e22a1f9d1da5d1720a
   x86_64-darwin:
-    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2025.09.1/rdkit-2025.09.1-x86_64-darwin.zip
-    sha256: 8ac1176a9cec3d37afaf208df09e8118994637083abc0db94a44df68f073c846
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2026.09.2/rdkit-2026.09.2-x86_64-darwin.zip
+    sha256: 169ffdbfed2a59425e6777ad598ed64c7b8f6de0de7100b19ce7de2a8d127bc6
   arm64-darwin:
-    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2025.09.1/rdkit-2025.09.1-aarch64-darwin.zip
-    sha256: df4448ee962cfcfd1adabcfb70b6b4e4fc0289c4cc55bacf4a431e8bf0489b0b
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2026.09.2/rdkit-2026.09.2-aarch64-darwin.zip
+    sha256: cd9b43d9db36dce77ab68efeeaa9c8196d8393bba4fa12dac496c411384f4bab
   x64-mingw:
-    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2025.09.1/rdkit-2025.09.1-x86_64-windows.zip
-    sha256: b37af610b9fdde2a2e5dee65c2e37fa3b524b52b9c4d69b00562f7906fa08f17
+    url: https://github.com/ankane/ml-builds/releases/download/rdkit-2026.09.2/rdkit-2026.09.2-x86_64-windows.zip
+    sha256: a01a899f0275dab415f687268c1093ce935bc397b88af597cdbf664df0680cc3
