@@ -1,4 +1,4 @@
-## 0.2.1 (unreleased)
+## 0.2.1 (2026-11-05)
 
 - Updated RDKit to 2026.09.2
 
