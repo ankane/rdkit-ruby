@@ -13,4 +13,4 @@ platforms:
     sha256: cd9b43d9db36dce77ab68efeeaa9c8196d8393bba4fa12dac496c411384f4bab
   x64-mingw:
     url: https://github.com/ankane/ml-builds/releases/download/rdkit-2026.09.2/rdkit-2026.09.2-x86_64-windows.zip
-    sha256: a01a899f0275dab415f687268c1093ce935bc397b88af597cdbf664df0680cc3
+    sha256: 3fe959ef6ca01ed6bbdaabd7ad7ef50d49b73801950310b047ebb5af995e6047
